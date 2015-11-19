@@ -71,7 +71,7 @@ public class Shots extends JFrame {
             if (debug) {
                 System.out.println("Shot");
             }
-            Ball shot = new LinearBall(0, new Random().nextInt(this.getHeight()) - 50, 50, 30, Ball.Speed.Normal, randomColors());
+            Ball shot = new LinearBall(0, new Random().nextInt(this.getHeight()) - 50, 50, 50, Ball.Speed.Normal, randomColors());
             board.addBall(shot);
             shot.start();
         });
@@ -80,16 +80,14 @@ public class Shots extends JFrame {
             if (debug) {
                 System.out.println("Quick shot");
             }
-            for (int i = 0; i < 10; i++) {
-                Ball quick = new LinearBall(0, new Random().nextInt(this.getHeight() - 25), 25, 25, Ball.Speed.Quick, randomColors());
-                board.addBall(quick);
-                quick.start();
-            }
+            Ball quick = new LinearBall(0, new Random().nextInt(this.getHeight() - 25), 25, 25, Ball.Speed.Quick, randomColors());
+            board.addBall(quick);
+            quick.start();
         });
 
         btnQuickBouncing.addActionListener((ActionEvent e) -> {
             if (debug) {
-                System.out.println("Quick bouncing shot");
+                System.out.println("Madness");
             }
             for (int i = 0; i < 100; i++) {
                 Ball quick = new BouncingBall(0, new Random().nextInt(this.getHeight() - 25), 25, 25, Ball.Speed.Quick, randomColor());
