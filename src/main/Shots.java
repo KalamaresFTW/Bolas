@@ -21,11 +21,11 @@ public class Shots extends JFrame {
     private static final String lblSlow = "Slow shot";
     private static final String lblShot = "Shot";
     private static final String lblQuick = "Quick shot";
-    private static final String lblQuickBouncing = "Quick bouncing shot";
+    private static final String lblQuickBouncing = "Madness";
     private static final String title = "Shots";
     private static final int winWidth = 800;
     private static final int winHeight = 500;
-    public static final boolean debug = true;
+    public static final boolean debug = false;
     private static JButton btnSlow;
     private static JButton btnShot;
     private static JButton btnQuick;
