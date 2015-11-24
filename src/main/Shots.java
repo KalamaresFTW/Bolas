@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -30,7 +31,6 @@ public class Shots extends JFrame {
     private static JButton btnShot;
     private static JButton btnQuick;
     private static JButton btnQuickBouncing;
-
     private static Board board;
     private static JPanel btnPanel;
 
@@ -58,41 +58,53 @@ public class Shots extends JFrame {
 
         btnQuickBouncing = new JButton(lblQuickBouncing);
 
-        btnSlow.addActionListener((ActionEvent e) -> {
-            if (debug) {
-                System.out.println("Slow shot");
+        btnSlow.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (debug) {
+                    System.out.println("Slow shot");
+                }
+                Ball slow = new LinearBall(0, new Random().nextInt(getHeight()) - 75, 75, 75, Ball.Speed.Slow, randomColors());
+                board.addBall(slow);
+                slow.start();
             }
-            Ball slow = new LinearBall(0, new Random().nextInt(this.getHeight()) - 75, 75, 75, Ball.Speed.Slow, randomColors());
-            board.addBall(slow);
-            slow.start();
         });
 
-        btnShot.addActionListener((ActionEvent e) -> {
-            if (debug) {
-                System.out.println("Shot");
+        btnShot.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (debug) {
+                    System.out.println("Shot");
+                }
+                Ball shot = new LinearBall(0, new Random().nextInt(getHeight()) - 50, 50, 50, Ball.Speed.Normal, randomColors());
+                board.addBall(shot);
+                shot.start();
             }
-            Ball shot = new LinearBall(0, new Random().nextInt(this.getHeight()) - 50, 50, 50, Ball.Speed.Normal, randomColors());
-            board.addBall(shot);
-            shot.start();
         });
 
-        btnQuick.addActionListener((ActionEvent e) -> {
-            if (debug) {
-                System.out.println("Quick shot");
-            }
-            Ball quick = new LinearBall(0, new Random().nextInt(this.getHeight() - 25), 25, 25, Ball.Speed.Quick, randomColors());
-            board.addBall(quick);
-            quick.start();
-        });
-
-        btnQuickBouncing.addActionListener((ActionEvent e) -> {
-            if (debug) {
-                System.out.println("Madness");
-            }
-            for (int i = 0; i < 100; i++) {
-                Ball quick = new BouncingBall(0, new Random().nextInt(this.getHeight() - 25), 25, 25, Ball.Speed.Quick, randomColor());
+        btnQuick.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (debug) {
+                    System.out.println("Quick shot");
+                }
+                Ball quick = new LinearBall(0, new Random().nextInt(getHeight() - 25), 25, 25, Ball.Speed.Quick, randomColors());
                 board.addBall(quick);
                 quick.start();
+            }
+        });
+
+        btnQuickBouncing.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (debug) {
+                    System.out.println("Madness");
+                }
+                for (int i = 0; i < 100; i++) {
+                    Ball quick = new BouncingBall(0, new Random().nextInt(getHeight() - 25), 25, 25, Ball.Speed.Quick, randomColor());
+                    board.addBall(quick);
+                    quick.start();
+                }
             }
         });
 
@@ -173,5 +185,4 @@ public class Shots extends JFrame {
         }
 
     }
-
 }

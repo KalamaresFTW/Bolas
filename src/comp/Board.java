@@ -37,18 +37,14 @@ public class Board extends JPanel {
                 g.drawString("Amount of balls: " + amountOfBallsToString(), 10, this.getHeight() - 15);
                 g.drawString("Board dimensions: " + this.getHeight() + "x" + this.getWidth(), 10, this.getHeight() - 35);
             }
-            balls.stream().map((ball) -> {
+            for (Ball ball : balls) {
                 if ((ball.getxPos() >= getWidth() + ball.getWidth()) || (ball.getyPos() >= getHeight() + getHeight())) {
                     ball.kill();
                     balls.remove(ball);
                 }
-                return ball;
-            }).map((ball) -> {
                 ball.paint(g);
-                return ball;
-            }).forEach((_item) -> {
                 repaint();
-            });
+            }
         } catch (Exception e) {
         }
     }
@@ -68,5 +64,4 @@ public class Board extends JPanel {
             balls.remove(ball);
         }
     }
-
 }
