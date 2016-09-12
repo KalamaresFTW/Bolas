@@ -26,13 +26,15 @@ public class Shots extends JFrame {
     private static final String title = "Shots";
     private static final int winWidth = 800;
     private static final int winHeight = 500;
-    public static final boolean debug = false;
+    //IU items
     private static JButton btnSlow;
     private static JButton btnShot;
     private static JButton btnQuick;
     private static JButton btnQuickBouncing;
     private static Board board;
     private static JPanel btnPanel;
+    //Debug boolean flag
+    public static final boolean debug = false;
 
     private Shots() {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
